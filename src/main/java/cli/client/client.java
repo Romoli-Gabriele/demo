@@ -26,7 +26,7 @@ public class client {
             System.out.println("");
             System.exit(1);
         }
-        System.out.println(socket.getPort());
+        System.out.println(InetAddress.getLocalHost());
         return socket;
     }
     public void comunica(){
