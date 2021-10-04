@@ -4,7 +4,7 @@ import java.net.*;
 
 
 public class client {
-    String nomeServer = "server1";
+    String nomeServer = "localhost";
     int portaServer = 6789;
     Socket socket;
     BufferedReader tastiera;
@@ -26,6 +26,7 @@ public class client {
             System.out.println("");
             System.exit(1);
         }
+        System.out.println(socket.getPort());
         return socket;
     }
     public void comunica(){
