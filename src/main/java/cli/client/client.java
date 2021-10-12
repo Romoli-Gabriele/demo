@@ -8,7 +8,7 @@ public class client {
     int portaServer = 6789;
     Socket socket;
     BufferedReader tastiera;
-    String StringUser;
+    String StringUser = " ";
     String StringReply;
     DataInputStream in;
     DataOutputStream out;   
@@ -38,14 +38,14 @@ public class client {
             out.writeBytes(StringUser+'\n');
             StringReply = in.readLine();
             System.out.println("... risposta dal server "+ '\n'+StringReply);
-            if (StringUser.equals("FINE") || StringUser.equals("STOP")) {
+            if (StringUser == null || StringUser.equals("FINE") || StringUser.equals("STOP")) {
                 System.out.println("9 CLI: terminata elaborazione chiusura connessione");
                 socket.close();
                 break;
             }
         }
         }catch (Exception e){
-            
+            socket.close();
             System.exit(1);
         }
     }
