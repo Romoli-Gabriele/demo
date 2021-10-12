@@ -31,12 +31,13 @@ public class client {
     }
     public void comunica() throws IOException{
         try{
+            threadClose controllo = new threadClose(in, this);
+            controllo.start();
             for(;;){
             System.out.println("4 Inserisci stringa da modificare: "+'\n');
             StringUser = tastiera.readLine();
             System.out.println("5 Invio stringa al server e attendo...");
             out.writeBytes(StringUser+'\n');
-            StringReply = in.readLine();
             System.out.println("... risposta dal server "+ '\n'+StringReply);
             if (StringUser == null || StringUser.equals("FINE") || StringUser.equals("STOP")) {
                 System.out.println("9 CLI: terminata elaborazione chiusura connessione");
