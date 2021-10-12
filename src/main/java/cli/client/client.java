@@ -38,12 +38,12 @@ public class client {
             StringUser = tastiera.readLine();
             System.out.println("5 Invio stringa al server e attendo...");
             out.writeBytes(StringUser+'\n');
-            System.out.println("... risposta dal server "+ '\n'+StringReply);
-            if (StringUser == null || StringUser.equals("FINE") || StringUser.equals("STOP")) {
+            /*if (StringUser == null || StringUser.equals("FINE") || StringUser.equals("STOP")) {
                 System.out.println("9 CLI: terminata elaborazione chiusura connessione");
                 socket.close();
                 break;
-            }
+            }*/
+            
         }
         }catch (Exception e){
             socket.close();

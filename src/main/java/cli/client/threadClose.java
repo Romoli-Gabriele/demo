@@ -18,11 +18,11 @@ public class threadClose extends Thread {
         for (;;) {
             try {
                 reply = in.readLine();
-                if (reply.equals("close")) {
+                if (reply.equals("close")||cli.StringUser.equals("FINE")||cli.StringUser.equals("STOP")) {
                     System.out.println("Server disconnesso, chiusura client..");
                     System.exit(1);
                 }else{
-                    cli.StringReply = reply;
+                    System.out.println("... risposta dal server "+ '\n'+reply);
                 }
             } catch (IOException e) {
                 
