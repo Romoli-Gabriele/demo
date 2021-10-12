@@ -29,17 +29,23 @@ public class client {
         System.out.println(InetAddress.getLocalHost());
         return socket;
     }
-    public void comunica(){
+    public void comunica() throws IOException{
         try{
+            for(;;){
             System.out.println("4 Inserisci stringa da modificare: "+'\n');
             StringUser = tastiera.readLine();
             System.out.println("5 Invio stringa al server e attendo...");
             out.writeBytes(StringUser+'\n');
             StringReply = in.readLine();
             System.out.println("... risposta dal server "+ '\n'+StringReply);
-            System.out.println("9 CLI: terminata belaborazione chiusura connessione");
-            socket.close();
+            if (StringUser.equals("FINE") || StringUser.equals("STOP")) {
+                System.out.println("9 CLI: terminata elaborazione chiusura connessione");
+                socket.close();
+                break;
+            }
+        }
         }catch (Exception e){
+            
             System.exit(1);
         }
     }
