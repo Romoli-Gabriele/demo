@@ -13,7 +13,7 @@ public class client {
     DataInputStream in;
     DataOutputStream out;
 
-    protected Socket connetti() {
+    protected Socket connetti() {//non si tocca
         try {
             tastiera = new BufferedReader(new InputStreamReader(System.in)); // creazione Buffer
             socket = new Socket(nomeServer, portaServer); // creazione nuovo Socket
@@ -23,23 +23,18 @@ public class client {
             System.err.println("Errore creazione Socket o Buffer");
             System.exit(1);
         }
-        try {
-            System.out.println(InetAddress.getLocalHost());// Stampa ind IP client
-        } catch (Exception e) {
-            System.err.println("Ipossibile trovare IP");
-        }
+        
         return socket;
     }
 
     public void comunica() throws IOException {
-        threadClose controllo = new threadClose(in, this); // Creazione thread controllo chiusura da remoto
-        controllo.start();
+        
         try {
             for (;;) {
                 System.out.println("4 Inserisci stringa da modificare: " + '\n');
                 StringUser = tastiera.readLine();//Lettura linea dal Buffer
                 System.out.println("5 Invio stringa al server e attendo...");
-                out.writeBytes(StringUser + '\n');//Invio stringa al server
+                out.writeBytes(StringUser + '\n');//---Invio stringa al server metodo per inviare cose al server 
 
             }
         } catch (Exception e) {
